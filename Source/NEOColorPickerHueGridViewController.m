@@ -24,7 +24,7 @@
 
 #import "NEOColorPickerHueGridViewController.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "UIColor+NEOColor.h"
 
 @interface NEOColorPickerHueGridViewController () <UIScrollViewDelegate>
 
@@ -37,7 +37,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:nibNameOrNil bundle:[NSBundle bundleForClass:self.class]];
     if (self) {
         self.hueColors = [NSMutableArray array];
         
@@ -71,7 +71,7 @@
     UIImageView *checkeredView = [[UIImageView alloc] initWithFrame:frame];
     checkeredView.layer.cornerRadius = 6.0;
     checkeredView.layer.masksToBounds = YES;
-    checkeredView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"colorPicker.bundle/color-picker-checkered"]];
+    checkeredView.backgroundColor = [UIColor colorWithPatternImage:[Resources imageNamed:@"colorPicker.bundle/color-picker-checkered"]];
     [self.view addSubview:checkeredView];
     
     CALayer *layer = [CALayer layer];
@@ -103,7 +103,7 @@
     }
 
     self.scrollView.contentSize = CGSizeMake(3840, 296);
-    self.colorBar.image = [UIImage imageNamed:@"colorPicker.bundle/color-bar"];
+    self.colorBar.image = [Resources imageNamed:@"colorPicker.bundle/color-bar"];
     
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(colorGridTapped:)];
     [self.scrollView addGestureRecognizer:recognizer];

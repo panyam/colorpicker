@@ -42,7 +42,7 @@
 @implementation NEOColorPickerViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:nibNameOrNil bundle:[NSBundle bundleForClass:self.class]];
     if (self) {
         _colorArray = [NSMutableArray array];
         
@@ -61,10 +61,6 @@
     return self;
 }
 
-- (UIImage *)imageNamed:(NSString *)string {
-    return [UIImage imageNamed:string inBundle:[NSBundle bundleForClass:self.class] compatibleWithTraitCollection:nil];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (!self.selectedColor) {
@@ -79,25 +75,25 @@
     
     [self.buttonHue setBackgroundColor:[UIColor clearColor]];
 //    [NTTAppDefaults setupSecondaryButton:self.buttonHue];
-    [self.buttonHue setImage:[self imageNamed:@"colorPicker.bundle/hue_selector"] forState:UIControlStateNormal];
+    [self.buttonHue setImage:[Resources imageNamed:@"colorPicker.bundle/hue_selector"] forState:UIControlStateNormal];
     
     [self.buttonAddFavorite setBackgroundColor:[UIColor clearColor]];
 //    [NTTAppDefaults setupSecondaryButton:self.buttonAddFavorite];
-    [self.buttonAddFavorite setImage:[self imageNamed:@"colorPicker.bundle/picker-favorites-add"] forState:UIControlStateNormal];
+    [self.buttonAddFavorite setImage:[Resources imageNamed:@"colorPicker.bundle/picker-favorites-add"] forState:UIControlStateNormal];
     
     [self.buttonFavorites setBackgroundColor:[UIColor clearColor]];
 //    [NTTAppDefaults setupSecondaryButton:self.buttonFavorites];
-    [self.buttonFavorites setImage:[self imageNamed:@"colorPicker.bundle/picker-favorites"] forState:UIControlStateNormal];
+    [self.buttonFavorites setImage:[Resources imageNamed:@"colorPicker.bundle/picker-favorites"] forState:UIControlStateNormal];
     
     [self.buttonHueGrid setBackgroundColor:[UIColor clearColor]];
 //    [NTTAppDefaults setupSecondaryButton:self.buttonHueGrid];
-    [self.buttonHueGrid setImage:[self imageNamed:@"colorPicker.bundle/picker-grid"] forState:UIControlStateNormal];
+    [self.buttonHueGrid setImage:[Resources imageNamed:@"colorPicker.bundle/picker-grid"] forState:UIControlStateNormal];
     
     CGRect frame = CGRectMake(130, 16, 100, 40);
     UIImageView *checkeredView = [[UIImageView alloc] initWithFrame:frame];
     checkeredView.layer.cornerRadius = 6.0;
     checkeredView.layer.masksToBounds = YES;
-    checkeredView.backgroundColor = [UIColor colorWithPatternImage:[self imageNamed:@"colorPicker.bundle/color-picker-checkered"]];
+    checkeredView.backgroundColor = [UIColor colorWithPatternImage:[Resources imageNamed:@"colorPicker.bundle/color-picker-checkered"]];
     [self.view addSubview:checkeredView];
     
     CALayer *layer = [CALayer layer];

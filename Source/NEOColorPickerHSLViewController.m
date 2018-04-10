@@ -43,7 +43,9 @@
 @end
 
 @implementation NEOColorPickerHSLViewController
-
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    return [super initWithNibName:nibNameOrNil bundle:[NSBundle bundleForClass:self.class]];
+}
 
 - (void)viewDidLoad {
     if (self.selectedColor == nil) {
@@ -52,8 +54,8 @@
     
     [super viewDidLoad];
     
-    self.checkeredView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:CP_RESOURCE_CHECKERED_IMAGE]];
-    self.hueImageView.image = [UIImage imageNamed:CP_RESOURCE_HUE_CIRCLE];
+    self.checkeredView.backgroundColor = [UIColor colorWithPatternImage:[Resources imageNamed:CP_RESOURCE_CHECKERED_IMAGE]];
+    self.hueImageView.image = [Resources imageNamed:CP_RESOURCE_HUE_CIRCLE];
     
     self.hueImageView.layer.zPosition = 10;
     self.labelPreview.layer.zPosition = 11;
@@ -68,7 +70,7 @@
     [self.view.layer addSublayer:_colorLayer];
     [_colorLayer setNeedsDisplay];
     
-    self.hueCrosshair.image = [UIImage imageNamed:CP_RESOURCE_HUE_CROSSHAIR];
+    self.hueCrosshair.image = [Resources imageNamed:CP_RESOURCE_HUE_CROSSHAIR];
     self.hueCrosshair.layer.zPosition = 15;
     
     self.gradientViewSaturation.backgroundColor = [UIColor clearColor];
@@ -85,7 +87,7 @@
     self.gradientViewLuminosity.layer.borderWidth = 2.0;
     self.gradientViewLuminosity.delegate = self;
 
-    self.gradientViewAlpha.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:CP_RESOURCE_CHECKERED_IMAGE]];
+    self.gradientViewAlpha.backgroundColor = [UIColor colorWithPatternImage:[Resources imageNamed:CP_RESOURCE_CHECKERED_IMAGE]];
     self.gradientViewAlpha.layer.masksToBounds = YES;
     self.gradientViewAlpha.layer.cornerRadius = 5.0;
     self.gradientViewAlpha.layer.borderColor = [UIColor grayColor].CGColor;
@@ -114,19 +116,19 @@
     [self.hueImageView addGestureRecognizer:tapRecognizer];
     
     self.buttonSatMax.backgroundColor = [UIColor clearColor];
-    [self.buttonSatMax setImage:[UIImage imageNamed:CP_RESOURCE_VALUE_MAX] forState:UIControlStateNormal];
+    [self.buttonSatMax setImage:[Resources imageNamed:CP_RESOURCE_VALUE_MAX] forState:UIControlStateNormal];
     self.buttonSatMin.backgroundColor = [UIColor clearColor];
-    [self.buttonSatMin setImage:[UIImage imageNamed:CP_RESOURCE_VALUE_MIN] forState:UIControlStateNormal];
+    [self.buttonSatMin setImage:[Resources imageNamed:CP_RESOURCE_VALUE_MIN] forState:UIControlStateNormal];
 
     self.buttonLumMax.backgroundColor = [UIColor clearColor];
-    [self.buttonLumMax setImage:[UIImage imageNamed:CP_RESOURCE_VALUE_MAX] forState:UIControlStateNormal];
+    [self.buttonLumMax setImage:[Resources imageNamed:CP_RESOURCE_VALUE_MAX] forState:UIControlStateNormal];
     self.buttonLumMin.backgroundColor = [UIColor clearColor];
-    [self.buttonLumMin setImage:[UIImage imageNamed:CP_RESOURCE_VALUE_MIN] forState:UIControlStateNormal];
+    [self.buttonLumMin setImage:[Resources imageNamed:CP_RESOURCE_VALUE_MIN] forState:UIControlStateNormal];
 
     self.buttonAlphaMax.backgroundColor = [UIColor clearColor];
-    [self.buttonAlphaMax setImage:[UIImage imageNamed:CP_RESOURCE_VALUE_MAX] forState:UIControlStateNormal];
+    [self.buttonAlphaMax setImage:[Resources imageNamed:CP_RESOURCE_VALUE_MAX] forState:UIControlStateNormal];
     self.buttonAlphaMin.backgroundColor = [UIColor clearColor];
-    [self.buttonAlphaMin setImage:[UIImage imageNamed:CP_RESOURCE_VALUE_MIN] forState:UIControlStateNormal];
+    [self.buttonAlphaMin setImage:[Resources imageNamed:CP_RESOURCE_VALUE_MIN] forState:UIControlStateNormal];
 }
 
 

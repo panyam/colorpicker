@@ -24,6 +24,10 @@
 
 #import <UIKit/UIKit.h>
 
+@interface Resources : NSObject
++ (UIImage *)imageNamed:(NSString *)name;
+@end
+
 @interface UIColor (NEOColor)
 
 + (UIColor *) neoRandomColor;

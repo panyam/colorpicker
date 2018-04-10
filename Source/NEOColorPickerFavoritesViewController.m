@@ -24,7 +24,7 @@
 
 #import "NEOColorPickerFavoritesViewController.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "UIColor+NEOColor.h"
 
 @interface NEOColorPickerFavoritesViewController () <UIScrollViewDelegate>
 
@@ -36,7 +36,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:nibNameOrNil bundle:[NSBundle bundleForClass:self.class]];
     if (self) {
         // Custom initialization
     }
@@ -55,7 +55,7 @@
     UIImageView *checkeredView = [[UIImageView alloc] initWithFrame:frame];
     checkeredView.layer.cornerRadius = 6.0;
     checkeredView.layer.masksToBounds = YES;
-    checkeredView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"colorPicker.bundle/color-picker-checkered"]];
+    checkeredView.backgroundColor = [UIColor colorWithPatternImage:[Resources imageNamed:@"colorPicker.bundle/color-picker-checkered"]];
     [self.view addSubview:checkeredView];
     
     CALayer *layer = [CALayer layer];
@@ -70,7 +70,7 @@
     self.selectedColorLayer.backgroundColor = self.selectedColor.CGColor;
     
     NSOrderedSet *colors = [NEOColorPickerFavoritesManager instance].favoriteColors;
-    UIColor *pattern = [UIColor colorWithPatternImage:[UIImage imageNamed:@"colorPicker.bundle/color-picker-checkered"]];
+    UIColor *pattern = [UIColor colorWithPatternImage:[Resources imageNamed:@"colorPicker.bundle/color-picker-checkered"]];
     NSInteger count = [colors count];
     for (NSInteger i = 0; i < count; i++) {
         NSInteger page = i / 24;
