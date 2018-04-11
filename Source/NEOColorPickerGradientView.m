@@ -23,7 +23,7 @@
 
 
 #import "NEOColorPickerGradientView.h"
-
+#import "UIColor+NEOColor.h"
 #define CP_RESOURCE_GRADIENT_TRACKER                           @"colorPicker.bundle/color-picker-bar"
 
 
@@ -79,7 +79,7 @@
     _value = value;
     if (!self.hidden) {
         if (!self.selectorView) {
-            UIImageView *view = [[UIImageView alloc] initWithImage:[UIImage imageNamed:CP_RESOURCE_GRADIENT_TRACKER]];
+            UIImageView *view = [[UIImageView alloc] initWithImage:[Resources imageNamed:CP_RESOURCE_GRADIENT_TRACKER]];
             view.frame = CGRectMake(0, self.frame.origin.y, 14, 40);
             [self.superview addSubview:view];
             self.selectorView = view;

@@ -23,7 +23,11 @@
 
 
 #import "UIColor+NEOColor.h"
-
+@implementation Resources
++ (UIImage *)imageNamed:(NSString *)name {
+    return [UIImage imageNamed:name inBundle:[NSBundle bundleForClass:self] compatibleWithTraitCollection:nil];
+}
+@end
 @implementation UIColor (NEOColor)
 
 
